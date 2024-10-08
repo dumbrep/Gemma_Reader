@@ -93,7 +93,6 @@ with st.sidebar:
     3. Ask your questions in the main section.
     """)
 
-# Only process PDFs once and store in session state
 if uploaded_files and ss.documents is None:
     documents = []
     images = []
@@ -121,7 +120,7 @@ if uploaded_files and ss.documents is None:
     ss.documents = documents
     ss.images = images
 
-# Only if PDFs are processed, proceed to the main logic
+
 if ss.documents:
     contextualize_q_system_prompt = (
         "Given a chat history and latest user question"
@@ -164,12 +163,10 @@ if ss.documents:
     
     # Only if PDFs are processed, proceed to the main logic
 if ss.documents:
-    # ... [other code]
-
-    # Processing images for embeddings
+    
     image_vectors = []
     for image_tuple in ss.images:
-        # Each item in images is a tuple (image, image_ext)
+        
         image = image_tuple[0]  # Extract the PIL.Image
         # Ensure image is a PIL Image
         if isinstance(image, Image.Image):
