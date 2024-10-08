@@ -28,7 +28,7 @@ from transformers import CLIPModel, CLIPProcessor
 load_dotenv()
 
 # Set API keys
-groq_api_key = os.getenv("GROQ_API_KEY")
+
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 llm = ChatOpenAI(model = "gpt-4o")
