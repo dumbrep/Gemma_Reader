@@ -27,7 +27,6 @@ load_dotenv()
 
 # Set API keys
 groq_api_key = os.getenv("GROQ_API_KEY")
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 # Initialize LLM
 llm = ChatGroq(api_key=groq_api_key, model="Gemma2-9b-It")
