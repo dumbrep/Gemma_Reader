@@ -68,7 +68,6 @@ with st.sidebar:
     3. Ask your questions in the main section.
     """)
 
-# Only process PDFs once and store in session state
 if uploaded_files and ss.documents is None:
     documents = []
   
