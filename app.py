@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
-from langchain_groq import ChatGroq
+
+from langchain_openai import ChatOpenAI
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -27,9 +28,12 @@ load_dotenv()
 
 # Set API keys
 groq_api_key = os.getenv("GROQ_API_KEY")
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 # Initialize LLM
-llm = ChatGroq(api_key=groq_api_key, model="Gemma2-9b-It")
+#llm = ChatGroq(api_key=groq_api_key, model="Gemma2-9b-It")
+llm = ChatOpenAI(model = "gpt-4o")
+
 
 # Streamlit app setup
 st.set_page_config(page_title="Study Helper", page_icon="📚")
@@ -67,6 +71,7 @@ with st.sidebar:
     3. Ask your questions in the main section.
     """)
 
+# Only process PDFs once and store in session state
 if uploaded_files and ss.documents is None:
     documents = []
   
