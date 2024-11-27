@@ -1,7 +1,7 @@
 import os
-from dotenv import load_dotenv
 
-from langchain_openai import ChatOpenAI
+
+from langchain_groq import ChatGroq
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -24,15 +24,15 @@ import io
 
 
 # Load environment variables
-load_dotenv()
 
 # Set API keys
-groq_api_key = os.getenv("GROQ_API_KEY")
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+grouq_key = st.secrets["gr_key"]
+
+os.environ["OPENAI_API_KEY"] = grouq_key
 
 # Initialize LLM
-#llm = ChatGroq(api_key=groq_api_key, model="Gemma2-9b-It")
-llm = ChatOpenAI(model = "gpt-4o")
+llm = ChatGroq( model="Gemma2-9b-It")
+
 
 
 # Streamlit app setup
@@ -166,7 +166,7 @@ if ss.documents:
     if user_input:
         with st.spinner('Thinking...'):
             try:
-                # Generate response only if no response exists or new input is given
+               
                 if not ss.response or 'user_input' in st.session_state:
                     ss.response = conversational_rag_chain.invoke(
                         {"input": user_input},
