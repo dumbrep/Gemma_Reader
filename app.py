@@ -28,10 +28,10 @@ import io
 # Set API keys
 grouq_key = st.secrets["gr_key"]
 
-os.environ["OPENAI_API_KEY"] = grouq_key
+
 
 # Initialize LLM
-llm = ChatGroq( model="Gemma2-9b-It")
+llm = ChatGroq( key =grouq_key, model="Gemma2-9b-It")
 
 
 
