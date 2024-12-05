@@ -1,6 +1,4 @@
 import os
-
-
 from langchain_groq import ChatGroq
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
